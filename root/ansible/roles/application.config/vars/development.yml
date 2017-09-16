@@ -1,0 +1,8 @@
+---
+khaos:
+  nginx:
+    site:
+      application:
+        server: "{{ application.name }}.docker"
+        root: /var/www/application
+        public: /var/www/application/public

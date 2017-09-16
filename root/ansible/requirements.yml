@@ -1,0 +1,13 @@
+---
+
+- src: https://github.com/KhaosLibrary/ansible-supervisor
+  name: khaos.supervisor
+
+- src: https://github.com/KhaosLibrary/ansible-cron
+  name: khaos.cron
+
+- src: https://github.com/KhaosLibrary/ansible-nginx
+  name: khaos.nginx
+
+- src: https://github.com/KhaosLibrary/ansible-php
+  name: khaos.php

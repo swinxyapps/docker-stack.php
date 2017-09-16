@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+
+  web:
+    image: "swinxyapps/stack.php:7.0"
+    environment:
+      - APP_NAME=example
+    volumes:
+      - ./:/var/www/application

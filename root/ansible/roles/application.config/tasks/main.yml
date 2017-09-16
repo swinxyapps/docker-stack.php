@@ -1,0 +1,12 @@
+---
+- name: include common application configuration
+  include_vars:
+    file: common.yml
+  tags:
+   - configuration
+
+- name: include environment specific configuration
+  include_vars:
+    file: development.yml
+  tags:
+   - configuration

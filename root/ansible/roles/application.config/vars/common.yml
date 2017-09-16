@@ -1,0 +1,25 @@
+---
+application:
+  name: example
+khaos:
+  container: true
+  nginx:
+    site:
+      application:
+        template: "{{ playbook_dir }}/roles/application.config/templates/nginx/site.conf.j2"
+        enabled: true
+        server: "www.{{ application.name }}.com"
+        root: /var/www/application
+        public: /var/www/application/public
+  php:
+    extensions:
+      - xml
+      - gd
+      - mysql
+      - xdebug
+      - opcache
+      - zip
+      - mcrypt
+      - curl
+      - intl
+      - mbstring

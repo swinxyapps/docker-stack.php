@@ -1,0 +1,8 @@
+---
+- hosts: application
+  roles:
+    - application.config
+    - khaos.supervisor
+    - khaos.nginx
+    - khaos.php
+    # - application.tasks

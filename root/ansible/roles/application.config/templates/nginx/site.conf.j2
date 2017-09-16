@@ -1,0 +1,21 @@
+
+upstream fastcgi_backend
+{
+    server unix:/var/run/php/php-fpm_www.sock;
+}
+
+server
+{
+    listen 80;
+    server_name {{ site.server }};
+    root {{ site.public }};
+
+    index index.php;
+
+    location ~ \.php$ {
+        include       snippets/fastcgi-php.conf;
+        fastcgi_pass  fastcgi_backend;
+    }
+}
+
+
