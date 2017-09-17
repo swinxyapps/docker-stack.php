@@ -5,6 +5,15 @@ services:
   web:
     image: "swinxyapps/stack.php:7.0"
     environment:
-      - APP_NAME=example
+      APP_NAME: example
+      APP_CONF: |-
+        swinxy:
+          php:
+            composer:
+              auth:
+                basic:
+                  - url: "http://repo.magento.com"
+                    username: "username"
+                    password: "password"
     volumes:
-      - ./:/var/www/application
+      - ./:/application

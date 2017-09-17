@@ -1,7 +1,7 @@
 ---
 application:
   name: example
-khaos:
+swinxy:
   container: true
   nginx:
     site:
@@ -9,8 +9,8 @@ khaos:
         template: "{{ playbook_dir }}/roles/application.config/templates/nginx/site.conf.j2"
         enabled: true
         server: "www.{{ application.name }}.com"
-        root: /var/www/application
-        public: /var/www/application/public
+        root: /application
+        public: /application/public
   php:
     extensions:
       - xml

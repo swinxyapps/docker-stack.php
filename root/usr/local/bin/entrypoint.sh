@@ -12,14 +12,20 @@ fi
 # Apply runtime configuration
 
 APP_NAME=${APP_NAME:-'example'}
-APP_CONF=${APP_CONF:-'{}'}
+APP_CONF=${APP_CONF:-'---'}
+
+echo "$APP_CONF" > /ansible/override.yaml
 
 cd /ansible \
   && ansible-playbook \
        -e "{ application: { name: $APP_NAME } }" \
-       -e "{ khaos: $APP_CONF }" \
-       --tags="run,development,configuration" \
+       -e "@/ansible/override.yaml" \
+       --tags="configuration" \
        site.yml
+
+# Cleanup
+
+rm -f /ansible/override.yaml
 
 # Start
 

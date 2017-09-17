@@ -14,10 +14,10 @@ RUN apt-get update && apt-get install -y git
 
 # Apply Filesystem
 
-RUN mkdir -p /var/www/application
+RUN mkdir -p /application
 
 COPY root /
-COPY public /var/www/application/public
+COPY public /application/public
 
 # Provision
 
