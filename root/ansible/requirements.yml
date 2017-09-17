@@ -1,13 +1,13 @@
 ---
 
-- src: https://github.com/KhaosLibrary/ansible-supervisor
-  name: khaos.supervisor
+- src: https://github.com/swinxyapps/ansible-supervisor
+  name: swinxy.supervisor
 
-- src: https://github.com/KhaosLibrary/ansible-cron
-  name: khaos.cron
+- src: https://github.com/swinxyapps/ansible-cron
+  name: swinxy.cron
 
-- src: https://github.com/KhaosLibrary/ansible-nginx
-  name: khaos.nginx
+- src: https://github.com/swinxyapps/ansible-nginx
+  name: swinxy.nginx
 
-- src: https://github.com/KhaosLibrary/ansible-php
-  name: khaos.php
+- src: https://github.com/swinxyapps/ansible-php
+  name: swinxy.php
