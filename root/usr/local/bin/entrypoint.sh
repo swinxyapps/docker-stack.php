@@ -4,9 +4,9 @@
 # environment and adjust the permissions of the running processes to match the users
 # directory to avoid permission errors.
 
-if mount | grep /var/www/application > /dev/null; then
-    usermod  -u `stat -c '%u' /var/www/application` www-data
-    groupmod -g `stat -c '%g' /var/www/application` www-data
+if mount | grep /application > /dev/null; then
+    usermod  -u `stat -c '%u' /application` www-data
+    groupmod -g `stat -c '%g' /application` www-data
 fi
 
 # Apply runtime configuration

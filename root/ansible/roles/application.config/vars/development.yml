@@ -1,6 +1,5 @@
 ---
-swinxy:
-  nginx:
-    site:
-      application:
-        server: "{{ application.name }}.docker"
+nginx:
+  site:
+    application:
+      server: "{{ application.name }}.docker"

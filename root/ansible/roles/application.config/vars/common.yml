@@ -1,25 +1,24 @@
 ---
+container: true
 application:
   name: example
-swinxy:
-  container: true
-  nginx:
-    site:
-      application:
-        template: "{{ playbook_dir }}/roles/application.config/templates/nginx/site.conf.j2"
-        enabled: true
-        server: "www.{{ application.name }}.com"
-        root: /application
-        public: /application/public
-  php:
-    extensions:
-      - xml
-      - gd
-      - mysql
-      - xdebug
-      - opcache
-      - zip
-      - mcrypt
-      - curl
-      - intl
-      - mbstring
+nginx:
+  site:
+    application:
+      template: "{{ playbook_dir }}/roles/application.config/templates/nginx/site.conf.j2"
+      enabled: true
+      server: "www.{{ application.name }}.com"
+      root: /application
+      public: /application/public
+php:
+  extensions:
+    - xml
+    - gd
+    - mysql
+    - xdebug
+    - opcache
+    - zip
+    - mcrypt
+    - curl
+    - intl
+    - mbstring
