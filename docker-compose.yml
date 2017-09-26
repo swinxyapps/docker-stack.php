@@ -3,6 +3,8 @@ services:
   web:
     image: "swinxyapps/stack.php:7.0"
     environment:
+      BUILD_STACK: "true"
+      BUILD_APPLICATION: "true"
       APP_NAME: example
       APP_CONF: |-
         php:

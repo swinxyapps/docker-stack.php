@@ -1,0 +1,20 @@
+#!/bin/bash
+
+BUILD_STACK=${BUILD_STACK:-"false"}
+
+if [ "$BUILD_STACK" = "true" ] ; then
+
+  APP_NAME=${APP_NAME:-'example'}
+  APP_CONF=${APP_CONF:-'dummy: value'}
+
+  echo "$APP_CONF" > /ansible/override.yaml
+
+  cd /ansible \
+    && ansible-playbook \
+      -e "{ application: { name: $APP_NAME } }" \
+      -e "@/ansible/override.yaml" \
+      site.yml
+
+  rm -f /ansible/override.yaml
+
+fi

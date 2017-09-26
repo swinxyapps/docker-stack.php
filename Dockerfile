@@ -1,7 +1,9 @@
 FROM ubuntu:16.04
 
-# Install Ansible
+ARG BUILD_STACK=true
+ARG BUILD_APPLICATION=false
 
+# Install Ansible
 RUN apt-get update \
  && apt-get install -y software-properties-common \
  && apt-add-repository ppa:ansible/ansible \
@@ -9,22 +11,16 @@ RUN apt-get update \
  && apt-get install -y ansible
 
 # Install Extra Dependencies
-
 RUN apt-get update && apt-get install -y git
 
 # Apply Filesystem
-
-RUN mkdir -p /application
-
-COPY root /
-COPY public /application/public
+COPY root        /
+COPY application /application
 
 # Provision
-
-RUN cd /ansible \
- && ansible-galaxy install -r requirements.yml -p ./roles \
- && ansible-playbook site.yml
+RUN cd /ansible && ansible-galaxy install -r requirements.yml -p ./roles
+RUN build-stack
+RUN build-application
 
 # Container Start
-
-CMD entrypoint.sh
+CMD run

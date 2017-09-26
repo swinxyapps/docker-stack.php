@@ -1,0 +1,9 @@
+#!/bin/bash
+
+BUILD_APPLICATION=${BUILD_APPLICATION:-"false"}
+
+if [ "$BUILD_STACK" = "true" ] ; then
+
+  echo "Hello World!!!"
+
+fi

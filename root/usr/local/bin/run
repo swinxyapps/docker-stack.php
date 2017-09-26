@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if mount | grep /application > /dev/null; then
+    usermod  -u `stat -c '%u' /application` www-data
+    groupmod -g `stat -c '%g' /application` www-data
+fi
+
+build-stack
+build-application
+
+exec /usr/bin/supervisord -n -c /etc/supervisor/supervisord.conf
