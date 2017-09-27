@@ -1,7 +1,7 @@
 FROM ubuntu:16.04
 
 ARG BUILD_STACK=true
-ARG BUILD_APPLICATION=false
+ARG BUILD_APPLICATION=true
 
 # Dependency - Ansible {
 RUN apt-get update \
@@ -19,7 +19,7 @@ RUN apt-get update \
 # Build - Stack {
 COPY root /
 RUN cd /ansible \
- && ansible-galaxy install -r requirements.yml -p ./roles
+ && ansible-galaxy install -r requirements.yml -p ./roles \
  && build-stack
 # }
 
