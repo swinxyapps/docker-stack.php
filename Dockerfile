@@ -3,24 +3,30 @@ FROM ubuntu:16.04
 ARG BUILD_STACK=true
 ARG BUILD_APPLICATION=false
 
-# Install Ansible
+# Dependency - Ansible {
 RUN apt-get update \
  && apt-get install -y software-properties-common \
  && apt-add-repository ppa:ansible/ansible \
  && apt-get update \
  && apt-get install -y ansible
+# }
 
-# Install Extra Dependencies
-RUN apt-get update && apt-get install -y git
+# Dependency - Extra Packages {
+RUN apt-get update \
+ && apt-get install -y git
+# }
 
-# Apply Filesystem
-COPY root        /
+# Build - Stack {
+COPY root /
+RUN cd /ansible \
+ && ansible-galaxy install -r requirements.yml -p ./roles
+ && build-stack
+# }
+
+# Build - Application {
 COPY application /application
-
-# Provision
-RUN cd /ansible && ansible-galaxy install -r requirements.yml -p ./roles
-RUN build-stack
 RUN build-application
+# }
 
-# Container Start
+# Run !
 CMD run
